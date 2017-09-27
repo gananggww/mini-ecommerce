@@ -5,14 +5,26 @@
         Vuepedia
       </div>
       <div class="right menu">
-        <a class="item">Sign Up</a>
+        <Loginbutton v-if="validasi === null"></Loginbutton>
+        <Logoutbutton v-else></Logoutbutton>
       </div>
     </div>
   </div>
 </template>
 
 <script>
+import Loginbutton from '@/components/Loginbutton'
+import Logoutbutton from '@/components/Logoutbutton'
 export default {
+  data () {
+    return {
+      validasi: localStorage.getItem('token')
+    }
+  },
+  components: {
+    Loginbutton,
+    Logoutbutton
+  }
 }
 </script>
 
