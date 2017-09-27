@@ -1,6 +1,6 @@
 <template lang="html">
   <div>
-    <Header></Header>
+    <Headers></Headers>
 
     <div class="ui grid container">
       <div class="ui stackable two column grid">
@@ -12,7 +12,7 @@
           </div>
           <div class="twelve wide column">
             <div class="ui segment">
-              <Content></Content>
+              <Contents></Contents>
             </div>
           </div>
         </div>
@@ -22,13 +22,13 @@
 </template>
 
 <script>
-import Header from '@/components/Header'
-import Content from '@/components/Content'
+import Headers from '@/components/Headers'
+import Contents from '@/components/Contents'
 import Cart from '@/components/Cart'
 export default {
   components: {
-    Header,
-    Content,
+    Headers,
+    Contents,
     Cart
   },
   data () {
