@@ -14,15 +14,15 @@ const state = {
 const mutations = {
   setQuestions (state, payload) {
     console.log('data mutation sbg payload goods: ', payload)
-    state.questions = payload
-  },
+    state.list = payload
+  }
 }
 
 const actions = {
   getGoods (context, payload) {
     http.get('/goods')
     .then(response => {
-      console.log('this is log response all goods : ',  response)
+      console.log('this is log response all goods : ', response)
       context.commit('set')
     })
   }
