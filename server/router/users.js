@@ -9,6 +9,6 @@ const setAccessToken = (req, res, next) => {
   next()
 }
 
-router.post('/login', setAccessToken, users.login)
+router.get('/login', setAccessToken, users.login)
 
 module.exports = router

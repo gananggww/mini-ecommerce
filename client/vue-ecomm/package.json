@@ -1,5 +1,5 @@
 {
-  "name": "ecommerce",
+  "name": "vue-ecomm",
   "version": "1.0.0",
   "description": "A Vue.js project",
   "author": "gananggww@gmail.com",
@@ -13,8 +13,12 @@
     "lint": "eslint --ext .js,.vue src test/unit/specs"
   },
   "dependencies": {
+    "axios": "^0.16.2",
     "vue": "^2.4.2",
-    "vue-router": "^2.7.0"
+    "vue-facebook-signin-button": "^1.0.1",
+    "vue-google-signin-button": "^1.0.2",
+    "vue-router": "^2.7.0",
+    "vuex": "^2.4.0"
   },
   "devDependencies": {
     "autoprefixer": "^7.1.2",

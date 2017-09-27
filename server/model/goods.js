@@ -7,10 +7,10 @@ const schemaGoods = new mongoose.Schema({
   jumlah: Number,
   status: false,
   seller: {
-    type: Schema.Types.ObjectId,
+    type: mongoose.Schema.Types.ObjectId,
     ref: 'User'
   }
 });
-const Good = mongoose.model('Good', schema);
+const Good = mongoose.model('Good', schemaGoods);
 
 module.exports = Good

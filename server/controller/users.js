@@ -3,41 +3,49 @@ const jwt = require('jsonwebtoken')
 const FB = require('fb')
 
 const login = (req, res) => {
-  FB.api('me', { field: ['id', 'name', 'picture', 'email']}, (response) => {
-    console.log('ini response dari callback field : ', response);
+  FB.api('/me', {fields: ['id','name','email','picture']}, (response) => {
+    // res.send(response)
+    console.log(response);
     db.find({fb_id: response.id})
-    .then(response => {
-      console.log('ini response finding user apakah udah login : ', response);
-      if(response.length === 0) {
+    .then(result => {
+      if(result.length === 0){
         db.create({
           fb_id: response.id,
           email: response.email,
-          name: response.name,
-          img: response.picture.data.url
+          img: response.picture.data.url,
+          name: response.name
         })
-        .then(rows => {
-          console.log('ini response ketika berhasil create : ', rows);
-          let nasiLele = {
-            fb_id: rows.fb_id,
+        .then(rows =>{
+          var siapBungkus = {
+            id: rows._id,
+            fb_id: rows.id,
             email: rows.email,
-            name: rows.name,
-            img: rows.img
+            name: rows.name
           }
-          let token = jwt.sign(nasiLele, 'satejeroan')
+          var token = jwt.sign(siapBungkus, 'apaaa')
+          console.log('tokennya', token);
           res.send({token: token, name: rows.name})
         })
-        .catch(err => {
-          console.log('ini error ketika gagal input data : ', err);
+        .catch(err =>{
           res.send(err)
         })
+      } else {
+        var siapBungkus = {
+          id: result._id,
+          fb_id: result.id,
+          email: result.email,
+          name: result.name
+        }
+        var token = jwt.sign(siapBungkus, 'apaaa')
+        console.log('tokennya', token);
+        res.send({token: token, name: result.name})
       }
-    })
-    .catch(err => {
-      console.log('ini error finding users');
     })
   })
 }
 
+
+
 module.exports = {
-  login
+  login,
 }

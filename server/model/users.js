@@ -6,6 +6,6 @@ const schemaUsers = new mongoose.Schema({
   fb_id: String,
   img: String
 });
-const User = mongoose.model('User', schema);
+const User = mongoose.model('User', schemaUsers);
 
 module.exports = User

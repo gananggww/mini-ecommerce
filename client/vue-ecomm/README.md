@@ -1,4 +1,4 @@
-# ecommerce
+# vue-ecomm
 
 > A Vue.js project
 

@@ -17,7 +17,7 @@ const insert = (req, res) => {
   db.create({
     nama: req.body.nama,
     deskripsi: req.body.deskripsi,
-    img: req.body.img
+    img: req.body.img,
     jumlah: req.body.jumlah,
     status: false,
     seller: req.headers.auth.id
@@ -28,11 +28,11 @@ const insert = (req, res) => {
   .catch(err => {
     res.send(err)
   })
-})
+}
 
 const lost = (req, res) => {
   db.remove({
-    _di: req.params.id
+    _di: req.params.id,
     seller: req.headers.auth.id
   })
   .then(response => {
