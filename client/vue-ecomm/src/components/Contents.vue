@@ -9,110 +9,36 @@
           </div>
         </div>
       </div>
-      <div class="column">
+      <div class="column" v-for="all in all">
         <div class="ui link cards">
           <div class="card">
             <div class="image">
-              <img src="https://semantic-ui.com/images/wireframe/image.png">
+              <img :src="all.img">
             </div>
             <div class="content">
-              <div class="header">Sepeda Putar</div>
+              <div class="header">{all.deskripsi.nama}</div>
               <div class="meta">
                 <a>Bandung</a>
               </div>
               <div class="description">
-                Matthew is an interior designer living in New York.
+                {{all.deskripsi_short}}
               </div>
             </div>
             <div class="extra content">
               <span>
                 <i class="user icon"></i>
                 xxx
-              </span>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="column">
-        <div class="ui link cards">
-          <div class="card">
-            <div class="image">
-              <img src="https://semantic-ui.com/images/wireframe/image.png">
-            </div>
-            <div class="content">
-              <div class="header">Sepeda Putar</div>
-              <div class="meta">
-                <a>Bandung</a>
-              </div>
-              <div class="description">
-                Matthew is an interior designer living in New York.
-              </div>
-            </div>
-            <div class="extra content">
-              <span>
-                <i class="user icon"></i>
-                xxx
-              </span>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="column">
-        <div class="ui link cards">
-          <div class="card">
-            <div class="image">
-              <img src="https://semantic-ui.com/images/wireframe/image.png">
-            </div>
-            <div class="content">
-              <div class="header">Sepeda Putar</div>
-              <div class="meta">
-                <a>Bandung</a>
-              </div>
-              <div class="description">
-                Matthew is an interior designer living in New York.
-              </div>
-            </div>
-            <div class="extra content">
-              <span>
-                <i class="user icon"></i>
-                xxx
-              </span>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="column">
-        <div class="ui link cards">
-          <div class="card">
-            <div class="image">
-              <img src="https://semantic-ui.com/images/wireframe/image.png">
-            </div>
-            <div class="content">
-              <div class="header">Sepeda Putar</div>
-              <div class="meta">
-                <a>Bandung</a>
-              </div>
-              <div class="description">
-                Matthew is an interior designer living in New York.
-              </div>
-            </div>
-            <div class="extra content">
-              <span>
-                <i class="user icon"></i>
-                xxx
-              </span>
               </span>
             </div>
           </div>
         </div>
       </div>
     </div>
-
   </div>
 </template>
 
 <script>
-import { mapActions } from 'vuex'
+import { mapState } from 'vuex'
 export default {
   data () {
     return {
@@ -120,17 +46,14 @@ export default {
     }
   },
   methods: {
-    ...mapActions([
-      'getGoods'
+    ...mapState([
+      'allGoods'
     ])
   },
   computed: {
-    quest () {
-      return this.$store.state.list
+    all () {
+      return this.allGoods()
     }
-  },
-  mounted () {
-    this.getGoods()
   }
 }
 </script>

@@ -1,10 +1,20 @@
 <template>
-  <div class="hello">
-    <div>
-      <img src="../assets/logo.png">
-      <h1>Vue-Commerce</h1>
-      <Buttonfb></Buttonfb>
-      <Buttongo></Buttongo>
+  <div class="ui container asas">
+    <div class="ui segment">
+      <div class="ui center aligned basic segment">
+        <h1>Vue-Commerce</h1>
+
+        <!-- <div class="ui left icon action input">
+          <i class="search icon"></i>
+          <input type="text" placeholder="Order #">
+          <div class="ui blue submit button">Search</div>
+        </div> -->
+        <div class="ui horizontal divider">
+          Or
+        </div>
+        <Buttonfb></Buttonfb>
+        <Buttongo></Buttongo>
+      </div>
     </div>
   </div>
 </template>
@@ -28,7 +38,10 @@ export default {
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
-<style scoped>
+<style>
+.asas {
+    text-align: center;
+}
 h1, h2 {
   font-weight: normal;
 }

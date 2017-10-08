@@ -1,14 +1,14 @@
 <template>
   <div class="right menu">
-    <a @click="goLogin()" class="item">Sign In</a>
+    <a @click="goAdmin" class="item">Buka lapak mu</a>
   </div>
 </template>
 
 <script>
 export default {
   methods: {
-    goLogin () {
-      this.$router.push('/login')
+    goAdmin () {
+      this.$router.push('/admin')
     }
   }
 }

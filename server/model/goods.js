@@ -3,6 +3,7 @@ const mongoose = require('mongoose')
 const schemaGoods = new mongoose.Schema({
   nama: String,
   deskripsi: String,
+  deskripsi_short: String,  
   img: String,
   jumlah: Number,
   status: false,

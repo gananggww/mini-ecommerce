@@ -1,11 +1,17 @@
 <template>
   <div class="right menu">
-    <a class="item">Sign Out</a>
+    <a @click="keluar()" class="item">Sign Out</a>
   </div>
 </template>
 
 <script>
 export default {
+  methods: {
+    keluar () {
+      localStorage.clear()
+      this.$router.push('/login')
+    }
+  }
 }
 </script>
 

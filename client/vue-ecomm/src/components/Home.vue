@@ -1,7 +1,6 @@
 <template lang="html">
   <div>
     <Headers></Headers>
-
     <div class="ui grid container">
       <div class="ui stackable two column grid">
         <div class="two column row">
@@ -25,6 +24,7 @@
 import Headers from '@/components/Headers'
 import Contents from '@/components/Contents'
 import Cart from '@/components/Cart'
+import {mapActions} from 'vuex'
 export default {
   components: {
     Headers,
@@ -41,10 +41,13 @@ export default {
       if (!this.validasi) {
         this.$router.push('/login')
       }
-    }
+    },
+    ...mapActions([
+      'getAll'
+    ])
   },
   mounted () {
-    // this.validasiToken()
+    this.getAll()
   }
 }
 </script>

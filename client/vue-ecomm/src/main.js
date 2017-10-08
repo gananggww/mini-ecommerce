@@ -6,17 +6,17 @@ import router from './router'
 import FBSignInButton from 'vue-facebook-signin-button'
 import GSignInButton from 'vue-google-signin-button'
 import vuex from 'vuex'
-import Store from './vuex/store'
+import store from './vuex/store'
 
-Vue.use(vuex)
 Vue.use(GSignInButton)
 Vue.use(FBSignInButton)
+Vue.use(vuex)
 Vue.config.productionTip = false
 
 /* eslint-disable no-new */
 new Vue({
   el: '#app',
-  Store,
+  store,
   router,
   template: '<App/>',
   components: { App }
