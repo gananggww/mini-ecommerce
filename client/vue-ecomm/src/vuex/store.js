@@ -13,7 +13,8 @@ const state = {
   allGoods: null,
   postingGood: null,
   goodsById: null,
-  goodId: null
+  goodId: null,
+  cartTemp: []
 }
 const getters = {
 
@@ -31,6 +32,18 @@ const mutations = {
   },
   setId (state, payload) {
     state.goodId = payload
+  },
+  setCartTemp (state, payload) {
+    console.log(state.cartTemp)
+    // if (state.cartTemp === []) {
+    state.cartTemp.push(payload)
+    // }
+    // state.cartTemp.forEach(d => {
+    //   if (d === null) {
+    //   } else {
+    //     alert('sudah ada')
+    //   }
+    // })
   }
 }
 
@@ -68,7 +81,7 @@ const actions = {
     })
   },
   getId (context, payload) {
-    http.get(`/goods/${payload.id}`)
+    http.get(`/goods/${payload}`)
     .then(response => {
       context.commit('setId', response.data)
     })

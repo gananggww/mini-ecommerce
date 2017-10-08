@@ -11,7 +11,7 @@
           </div>
           <div class="twelve wide column">
             <div class="ui segment">
-              <Contents></Contents>
+              <router-view></router-view>
             </div>
           </div>
         </div>

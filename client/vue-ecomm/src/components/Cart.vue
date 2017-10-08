@@ -8,14 +8,14 @@
           <a class="item"><i class="opencart icon"></i>Checkout</a>
         </div>
       </div>
-      <div class="item">
+      <div class="item" v-for="all in all">
         <div class="ui three column grid">
           <div class="five wide column">
             <img class="ui small image" src="https://semantic-ui.com/images/wireframe/image.png">
           </div>
           <div class="eight wide column">
             <div class="content">
-              <a class="header">Botol Minum</a>
+              <a class="header">{{all.nama}}</a>
               <div class="description">Rp.2000.000</div>
             </div>
           </div>
@@ -24,12 +24,24 @@
           </div>
         </div>
       </div>
+
     </div>
   </div>
 </template>
 
 <script>
+import {mapState} from 'vuex'
 export default {
+  methods: {
+    ...mapState([
+      'cartTemp'
+    ])
+  },
+  computed: {
+    all () {
+      return this.cartTemp()
+    }
+  }
 }
 </script>
 

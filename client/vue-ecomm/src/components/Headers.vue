@@ -1,9 +1,9 @@
 <template>
   <div>
     <div class="ui fixed menu heads">
-      <div class="header item">
+      <a @click="home()" class="header item">
         Vuepedia
-      </div>
+      </a>
       <Tohome v-show="router === '/admin'"></Tohome>
       <div class="right menu">
         <Adminbutton v-show="validasi !== null"></Adminbutton>
@@ -31,6 +31,11 @@ export default {
     Logoutbutton,
     Adminbutton,
     Tohome
+  },
+  methods: {
+    home () {
+      this.$router.push('/')
+    }
   }
 }
 </script>

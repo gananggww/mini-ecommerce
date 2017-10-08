@@ -16,7 +16,7 @@
               <img :src="all.img">
             </div>
             <div class="content">
-              <div class="header">{all.deskripsi.nama}</div>
+              <div class="header">{{all.nama}}</div>
               <div class="meta">
                 <a>Bandung</a>
               </div>
@@ -26,10 +26,13 @@
             </div>
             <div class="extra content">
               <span>
-                <i class="user icon"></i>
+                <i class="user large icon"></i>
                 xxx
+                <button @click="addCart(all)" class="ui right floated mini blue button" type="button" name="button">add</button>
               </span>
             </div>
+            <!-- <router-link :key="all._id" :to="'/'+ all._id"><a class="ui blue button" type="button" name="button">Detail</a></router-link> -->
+            <button @click="goId(all._id)" class="ui blue button" type="button" name="button">Detail</button>
           </div>
         </div>
       </div>
@@ -38,21 +41,44 @@
 </template>
 
 <script>
-import { mapState } from 'vuex'
+import { mapState, mapMutations } from 'vuex'
 export default {
   data () {
     return {
-
+      // cartList: this.cart()
     }
   },
   methods: {
     ...mapState([
-      'allGoods'
-    ])
+      'allGoods',
+      'cartTemp'
+    ]),
+    goId (id) {
+      this.$router.push(`/${id}`)
+    },
+    ...mapMutations([
+      'setCartTemp'
+    ]),
+    addCart (all) {
+      console.log(all._id)
+      console.log(this.cart)
+      this.setCartTemp(all)
+      // this.cart.forEach(d => {
+      //   if (all._id === d._id) {
+      //     console.log('masuk if')
+      //     this.setCartTemp(all)
+      //   } else {
+      //     alert('item sudah ditambahkan')
+      //   }
+      // })
+    }
   },
   computed: {
     all () {
       return this.allGoods()
+    },
+    cart () {
+      return this.cartTemp()
     }
   }
 }
