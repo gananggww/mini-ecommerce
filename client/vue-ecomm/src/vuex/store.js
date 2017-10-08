@@ -34,10 +34,19 @@ const mutations = {
     state.goodId = payload
   },
   setCartTemp (state, payload) {
-    console.log(state.cartTemp)
-    // if (state.cartTemp === []) {
-    state.cartTemp.push(payload)
-    // }
+    console.log(payload._id)
+    var status = true
+    state.cartTemp.forEach(d => {
+      console.log('ini forEach', d)
+      if (d._id === payload._id) {
+        status = false
+        console.log('ini kondisi if', d._id)
+        alert('sudah ada gan')
+      }
+    })
+    if (status === true) {
+      state.cartTemp.push(payload)
+    }
     // state.cartTemp.forEach(d => {
     //   if (d === null) {
     //   } else {

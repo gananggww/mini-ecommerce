@@ -60,17 +60,9 @@ export default {
       'setCartTemp'
     ]),
     addCart (all) {
-      console.log(all._id)
-      console.log(this.cart)
+      // console.log(all)
+      // console.log(this.cart)
       this.setCartTemp(all)
-      // this.cart.forEach(d => {
-      //   if (all._id === d._id) {
-      //     console.log('masuk if')
-      //     this.setCartTemp(all)
-      //   } else {
-      //     alert('item sudah ditambahkan')
-      //   }
-      // })
     }
   },
   computed: {
