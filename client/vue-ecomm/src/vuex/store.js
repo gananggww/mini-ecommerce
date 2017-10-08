@@ -14,7 +14,8 @@ const state = {
   postingGood: null,
   goodsById: null,
   goodId: null,
-  cartTemp: []
+  cartTemp: [],
+  transaction: []
 }
 const getters = {
 
@@ -47,12 +48,10 @@ const mutations = {
     if (status === true) {
       state.cartTemp.push(payload)
     }
-    // state.cartTemp.forEach(d => {
-    //   if (d === null) {
-    //   } else {
-    //     alert('sudah ada')
-    //   }
-    // })
+  },
+  setTransTemp (context, payload) {
+    console.log(payload)
+    state.transaction = payload
   }
 }
 

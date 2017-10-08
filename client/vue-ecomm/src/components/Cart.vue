@@ -5,7 +5,7 @@
       <div class="item">
         <div class="ui two item menu">
           <a class="item"><i class="trash outline icon"></i> Delete All</a>
-          <a class="item"><i class="opencart icon"></i>Checkout</a>
+          <a @click="goTrans()" class="item"><i class="opencart icon"></i>Checkout</a>
         </div>
       </div>
       <div class="item" v-for="all in all">
@@ -30,12 +30,20 @@
 </template>
 
 <script>
-import {mapState} from 'vuex'
+import {mapState, mapMutations} from 'vuex'
 export default {
   methods: {
     ...mapState([
       'cartTemp'
-    ])
+    ]),
+    ...mapMutations([
+      'setTransTemp'
+    ]),
+    goTrans () {
+      // console.log(this.all)
+      this.setTransTemp(this.all)
+      this.$router.push(`/transaction`)
+    }
   },
   computed: {
     all () {

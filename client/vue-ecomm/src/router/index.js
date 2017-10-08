@@ -5,6 +5,7 @@ import Home from '@/components/Home'
 import Admin from '@/components/Admin'
 import Contents from '@/components/Contents'
 import ContentId from '@/components/ContentId'
+import Transaction from '@/components/Transaction'
 
 Vue.use(Router)
 
@@ -15,6 +16,9 @@ export default new Router({
       path: '/login',
       name: 'Hello',
       component: Hello
+    }, {
+      path: '/transaction',
+      component: Transaction
     }, {
       path: '/',
       component: Home,
