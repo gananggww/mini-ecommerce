@@ -19,13 +19,13 @@
           </div>
         </div>
       </div>
-      <button class="ui fluid button green" type="button" name="button">Add to cart</button>
+      <button @click="addCart(dataa[0])" class="ui fluid button green" type="button" name="button">Add to cart</button>
     </div>
   </div>
 </template>
 
 <script>
-import {mapActions, mapState} from 'vuex'
+import {mapActions, mapState, mapMutations} from 'vuex'
 export default {
   props: ['id'],
   data () {
@@ -38,7 +38,14 @@ export default {
     ]),
     ...mapState([
       'goodId'
-    ])
+    ]),
+    ...mapMutations([
+      'setCartTemp'
+    ]),
+    addCart (all) {
+      // console.log(all)
+      this.setCartTemp(all)
+    }
   },
   mounted () {
     // console.log(this.id)
