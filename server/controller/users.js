@@ -31,14 +31,14 @@ const login = (req, res) => {
         })
       } else {
         var siapBungkus = {
-          id: result._id,
-          fb_id: result.id,
-          email: result.email,
-          name: result.name
+          id: result[0]._id,
+          fb_id: result[0].id,
+          email: result[0].email,
+          name: result[0].name
         }
         var token = jwt.sign(siapBungkus, 'apaaa')
         console.log('tokennya', token);
-        res.send({token: token, name: result.name})
+        res.send({token: token, name: result[0]})
       }
     })
   })
