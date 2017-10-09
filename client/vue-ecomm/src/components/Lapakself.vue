@@ -8,7 +8,7 @@
         </div>
       </div>
     </div>
-    <div class="column" v-for="all in self">
+    <div class="column" v-for="(all, index) in self">
       <div class="ui link cards" >
         <div class="card">
           <div class="image">
@@ -28,7 +28,9 @@
               <i class="user icon"></i>
               xxx
             </span>
+            <button @click="goDetail(all._id)" class="ui blue right floated tiny button" type="button" name="button">Detail</button>
           </div>
+          <button @click="removeSelf(all._id, index)" class="ui basic center aligned button" type="button" name="button"><i class="trash large outline icon"/></button>
         </div>
       </div>
     </div>
@@ -37,12 +39,22 @@
 </template>
 
 <script>
-import { mapState } from 'vuex'
+import { mapState, mapActions } from 'vuex'
 export default {
   methods: {
     ...mapState([
       'goodsById'
-    ])
+    ]),
+    ...mapActions([
+      'getDeleteSelf'
+    ]),
+    removeSelf (id, idx) {
+      var payload = {
+        id: id,
+        idx: idx
+      }
+      this.getDeleteSelf(payload)
+    }
   },
   computed: {
     self () {

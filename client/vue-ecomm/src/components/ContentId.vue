@@ -8,17 +8,26 @@
         <div class="content">
           <a class="header">{{dataa[0].nama}}</a>
           <div class="meta">
-            <span class="cinema">{{dataa[0].seller}}</span>
+            <span class="header">
+              <b>
+              Rp.{{dataa[0].harga}}
+              </b>
+            </span>
           </div>
           <div class="description">
             <p>{{dataa[0].deskripsi}}</p>
           </div>
-          <div class="extra">
+          <!-- <div class="extra">
             <div class="ui label">IMAX</div>
             <div class="ui label"><i class="globe icon"></i> Additional Languages</div>
+          </div> -->
+          <div class="ui label">
+            <img :src="dataa[0].seller.img">
+            {{dataa[0].seller.name}}
           </div>
         </div>
       </div>
+      <h4 class="ui dividing header"></h4>
       <button @click="addCart(dataa[0])" class="ui fluid button green" type="button" name="button">Add to cart</button>
     </div>
   </div>

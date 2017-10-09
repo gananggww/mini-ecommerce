@@ -1,10 +1,11 @@
 const db = require('../model/transactions')
 
 const insert = (req, res) => {
-  db.insert({
-    seller: req.body.seller,
+  db.create({
     buyer: req.headers.auth.id,
-    goods: req.headers.goods
+    goods: req.headers.goods,
+    address: req.body.address,
+    telp: req.body.telp
   })
   .then(response => {
     res.send(response)
@@ -19,7 +20,6 @@ const all = (req, res) => {
     _id: req.params.id
   })
   .populate('buyer')
-  .populate('seller')
   .populate('goods')
   .then(response => {
     res.send(response)

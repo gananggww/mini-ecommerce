@@ -22,15 +22,17 @@
               </div>
               <div class="description">
                 {{all.deskripsi_short}}
+                <h3>Rp.{{all.harga}}</h3>
               </div>
             </div>
             <div class="extra content">
+              <button @click="addCart(all)" class="ui right floated mini green button" type="button" name="button">add</button>
               <span>
-                <i class="user large icon"></i>
-                xxx
-                <button @click="addCart(all)" class="ui right floated mini blue button" type="button" name="button">add</button>
+                <i class="user icon"></i>
+                 {{all.seller.name}}
               </span>
             </div>
+
             <!-- <router-link :key="all._id" :to="'/'+ all._id"><a class="ui blue button" type="button" name="button">Detail</a></router-link> -->
             <button @click="goId(all._id)" class="ui blue button" type="button" name="button">Detail</button>
           </div>

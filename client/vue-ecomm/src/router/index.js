@@ -17,6 +17,9 @@ export default new Router({
       name: 'Hello',
       component: Hello
     }, {
+      path: '/admin',
+      component: Admin
+    }, {
       path: '/transaction',
       component: Transaction
     }, {
@@ -30,9 +33,6 @@ export default new Router({
         component: ContentId,
         props: true
       }]
-    }, {
-      path: '/admin',
-      component: Admin
     }
   ]
 })

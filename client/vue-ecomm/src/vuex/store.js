@@ -15,7 +15,9 @@ const state = {
   goodsById: null,
   goodId: null,
   cartTemp: [],
-  transaction: []
+  transaction: [],
+  payload: null,
+  cartToTrans: []
 }
 const getters = {
 
@@ -47,6 +49,7 @@ const mutations = {
     })
     if (status === true) {
       state.cartTemp.push(payload)
+      state.cartToTrans.push(payload._id)
     }
   },
   setTransTemp (state, payload) {
@@ -55,6 +58,18 @@ const mutations = {
   },
   setRemoveCart (state, payload) {
     state.cartTemp.splice(payload, 1)
+  },
+  setClearCart (state, payload) {
+    state.cartTemp = []
+  },
+  setDeleteSelf (state, payload) {
+    state.goodsById.splice(payload, 1)
+  },
+  setDelTrans (state, payload) {
+    state.transaction.splice(payload, 1)
+  },
+  setPostTrans (state, payload) {
+    state.result = payload
   }
 }
 
@@ -65,7 +80,8 @@ const actions = {
       deskripsi: payload.desc,
       deskripsi_short: payload.short_desc,
       img: payload.img,
-      jumlah: payload.stock
+      jumlah: payload.stock,
+      harga: payload.harga
     }, {
       headers: {
         token: localStorage.getItem('token')
@@ -95,6 +111,31 @@ const actions = {
     http.get(`/goods/${payload}`)
     .then(response => {
       context.commit('setId', response.data)
+    })
+  },
+  getDeleteSelf (context, payload) {
+    http.delete(`/goods/${payload.id}`, {
+      headers: {
+        token: localStorage.getItem('token')
+      }
+    })
+    .then(response => {
+      context.commit('setDeleteSelf', payload.idx)
+    })
+  },
+  postTrans (context, payload) {
+    http.post(`transactions/`, {
+      goods: payload.dataa,
+      address: payload.ordering.alamat,
+      telp: payload.ordering.telp
+    }, {
+      headers: {
+        token: localStorage.getItem('token')
+      }
+    })
+    .then(response => {
+      console.log('ini payload good', payload.dataa)
+      context.commit('setPostTrans', response)
     })
   }
 }

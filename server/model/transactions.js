@@ -5,10 +5,8 @@ const schemaGoods = new mongoose.Schema({
     type: mongoose.Schema.Types.ObjectId,
     ref: 'User'
   },
-  seller: {
-    type: mongoose.Schema.Types.ObjectId,
-    ref: 'User'
-  },
+  address: String,
+  telp: String,
   goods: [{
     type: mongoose.Schema.Types.ObjectId,
     ref: 'Good'

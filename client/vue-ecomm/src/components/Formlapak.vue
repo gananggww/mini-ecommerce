@@ -13,6 +13,10 @@
         <input v-model="jualan.stock" type="number" name="" value="">
       </div>
       <div class="field">
+        <label>Harga / pcs</label>
+        <input v-model="jualan.harga" type="number" min="1" step="any"/></span>
+      </div>
+      <div class="field">
         <label>URL gambar agan</label>
         <input v-model="jualan.img"></input>
       </div>
@@ -39,7 +43,8 @@ export default {
         img: '',
         short_desc: '',
         desc: '',
-        stock: ''
+        stock: '',
+        harga: ''
       }
     }
   },

@@ -42,6 +42,7 @@ const insert = (req, res) => {
     nama: req.body.nama,
     deskripsi: req.body.deskripsi,
     deskripsi_short: req.body.deskripsi_short,
+    harga: req.body.harga,
     img: req.body.img,
     jumlah: req.body.jumlah,
     // status: false,
@@ -57,8 +58,7 @@ const insert = (req, res) => {
 
 const lost = (req, res) => {
   db.remove({
-    _di: req.params.id,
-    seller: req.headers.auth.id
+    _di: req.params.id
   })
   .then(response => {
     res.send(response)
