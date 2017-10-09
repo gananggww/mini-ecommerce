@@ -8,7 +8,7 @@
           <a @click="goTrans()" class="item"><i class="opencart icon"></i>Checkout</a>
         </div>
       </div>
-      <div class="item" v-for="all in all">
+      <div class="item" v-for="(all, index) in all">
         <div class="ui three column grid">
           <div class="five wide column">
             <img class="ui small image" src="https://semantic-ui.com/images/wireframe/image.png">
@@ -20,7 +20,7 @@
             </div>
           </div>
           <div class="one wide column">
-            <a class="item"><i class="trash outline icon"></i></a>
+            <a @click="removeCart(index)" class="item"><i class="trash outline icon"></i></a>
           </div>
         </div>
       </div>
@@ -37,12 +37,15 @@ export default {
       'cartTemp'
     ]),
     ...mapMutations([
-      'setTransTemp'
+      'setTransTemp',
+      'setRemoveCart'
     ]),
     goTrans () {
-      // console.log(this.all)
       this.setTransTemp(this.all)
       this.$router.push(`/transaction`)
+    },
+    removeCart (idx) {
+      this.setRemoveCart(idx)
     }
   },
   computed: {

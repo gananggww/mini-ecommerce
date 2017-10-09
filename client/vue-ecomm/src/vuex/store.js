@@ -35,13 +35,13 @@ const mutations = {
     state.goodId = payload
   },
   setCartTemp (state, payload) {
-    console.log(payload._id)
+    // console.log(payload._id)
     var status = true
     state.cartTemp.forEach(d => {
-      console.log('ini forEach', d)
+      // console.log('ini forEach', d)
       if (d._id === payload._id) {
         status = false
-        console.log('ini kondisi if', d._id)
+        // console.log('ini kondisi if', d._id)
         alert('sudah ada gan')
       }
     })
@@ -49,9 +49,12 @@ const mutations = {
       state.cartTemp.push(payload)
     }
   },
-  setTransTemp (context, payload) {
-    console.log(payload)
+  setTransTemp (state, payload) {
+    // console.log(payload)
     state.transaction = payload
+  },
+  setRemoveCart (state, payload) {
+    state.cartTemp.splice(payload, 1)
   }
 }
 
